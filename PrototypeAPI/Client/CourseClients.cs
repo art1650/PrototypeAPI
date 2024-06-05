@@ -20,6 +20,7 @@ namespace PrototypeAPI.Client
             HttpResponseMessage responce = await _client.GetAsync($"/NBUStatService/v1/statdirectory/exchange?valcode={Valcode}&date={Date}&json");
             responce.EnsureSuccessStatusCode();
             string content = responce.Content.ReadAsStringAsync().Result;
+            Console.WriteLine(content);
             var result = JsonConvert.DeserializeObject<List<DateCourse>>(content);
             return result;
         }
